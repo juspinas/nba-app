@@ -1,0 +1,23 @@
+{
+  "name": "nba-app",
+  "version": "1.0.0",
+  "description": "An nba app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juspinas/nba-app.git"
+  },
+  "author": "Justin Espinas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juspinas/nba-app/issues"
+  },
+  "homepage": "https://github.com/juspinas/nba-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
