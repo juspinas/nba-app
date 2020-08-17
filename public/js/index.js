@@ -4,7 +4,7 @@ function getPlayerCount() {
     streamPromise.then((data) => storePlayerCount(data));
 }
 function storePlayerCount(data) {
-    alert(data)
+    // alert(data)
     document.getElementById("playerCount").innerHTML = data.playerCount;
 }
 
