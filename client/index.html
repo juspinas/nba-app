@@ -29,32 +29,31 @@
                 <div class="card">
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img class="is-rounded"src="https://www.basketball-reference.com/req/202008124/images/players/thomais02.jpg" alt="Placeholder image">
+                            <img id="img1" class="is-rounded" src="https://www.basketball-reference.com/req/202008124/images/players/thomais02.jpg" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p class="title is-4">Isaiah Thomas</p>
-                                <p class="subtitle is-6">Washington Wizards<br>Height: 5"9</p>
+                                <p id="playerName1"class="title is-4">Isaiah Thomas</p>
+                                <p id="playerInfo1"class="subtitle is-6">Washington Wizards<br>Height: 5"9</p>
                             </div>
                         </div>
                         <div class="content">
-                            <div>Games Played: </div>
-                            <div>Minutes: </div>
-                            <div>Points: </div>
-                            <div>Rebounds: </div>
-                            <div>Off-Rebounds: </div>
-                            <div>Def-Rebounds: </div>
-                            <div>Assists: </div>
-                            <div>Steals: </div>
-                            <div>Blocks: </div>
-                            <div>Turnovers: </div>
-                            <div>FG%: </div>
-                            <div>3P%: </div>
-                            <div>FT%: </div>
+                            <div>Games Played: <span id="gamesPlayed1"></span></div>
+                            <div>Minutes: <span id="minutes1"></span></div>
+                            <div>Points: <span id="points1"></span></div>
+                            <div>Rebounds: <span id="reb1"></span></div>
+                            <div>Off-Rebounds: <span id="oreb1"></span></div>
+                            <div>Def-Rebounds: <span id="dreb1"></span></div>
+                            <div>Assists: <span id="assists1"></span></div>
+                            <div>Steals: <span id="steals1"></span></div>
+                            <div>Blocks: <span id="blocks1"></span></div>
+                            <div>Turnovers: <span id="turnovers1"></span></div>
+                            <div>FGpct: <span id="fg1"></span></div>
+                            <div>3Ppct: <span id="3p1"></span></div>
+                            <div>FTpct: <span id="ft1"></span></div>
                             <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                         </div>
                     </div>
                 </div>
@@ -63,42 +62,39 @@
                 <div class="card">
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img class="is-rounded"src="https://www.basketball-reference.com/req/202008124/images/players/thomais01.jpg" alt="Placeholder image">
+                            <img id="img2" class="is-rounded" src="https://www.basketball-reference.com/req/202008124/images/players/thomais02.jpg" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p class="title is-4">Isaiah Thomas</p>
-                                <p class="subtitle is-6">Detroit Pistons<br>Height: 5"9</p>
+                                <p id="playerName2"class="title is-4">Isaiah Thomas</p>
+                                <p id="playerInfo2"class="subtitle is-6">Washington Wizards<br>Height: 5"9</p>
                             </div>
                         </div>
                         <div class="content">
-                            <div>Games Played: </div>
-                            <div>Minutes: </div>
-                            <div>Points: </div>
-                            <div>Rebounds: </div>
-                            <div>Off-Rebounds: </div>
-                            <div>Def-Rebounds: </div>
-                            <div>Assists: </div>
-                            <div>Steals: </div>
-                            <div>Blocks: </div>
-                            <div>Turnovers: </div>
-                            <div>FG%: </div>
-                            <div>3P%: </div>
-                            <div>FT%: </div>
+                            <div>Games Played: <span id="gamesPlayed2"></span></div>
+                            <div>Minutes: <span id="minutes2"></span></div>
+                            <div>Points: <span id="points2"></span></div>
+                            <div>Rebounds: <span id="reb2"></span></div>
+                            <div>Off-Rebounds: <span id="oreb2"></span></div>
+                            <div>Def-Rebounds: <span id="dreb2"></span></div>
+                            <div>Assists: <span id="assists2"></span></div>
+                            <div>Steals: <span id="steals2"></span></div>
+                            <div>Blocks: <span id="blocks2"></span></div>
+                            <div>Turnovers: <span id="turnovers2"></span></div>
+                            <div>FGpct: <span id="fg2"></span></div>
+                            <div>3Ppct: <span id="3p2"></span></div>
+                            <div>FTpct: <span id="ft2"></span></div>
                             <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-    <p id="playerCount"></p>
     <p id="playerId"></p>
-    <p id="playerFirstName"></p>
-    <p id="playerLastName"></p>
-    <button class="button" onclick="getRandomPlayer();">Button</button>
+    <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button>
     <script src="/js/index.js"></script>
 </body>
 
