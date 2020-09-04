@@ -1,5 +1,44 @@
-#heading {
+html,body {
+    width:100%;
+}
+#columnsContainer {
+    width: 50%;
+    margin: auto;
+}
+@media screen and (max-device-width: 1200px){
+    #columnsContainer {
+        width: 75%;
+        margin: auto;
+    }
+}
+@media screen and (max-device-width: 900px){
+    #columnsContainer {
+        width: 90%;
+        margin: auto;
+    }
+}
+@media screen and (max-device-width: 768px){
+    #columnsContainer {
+        width: 70%;
+        margin: auto;
+    }
+}
+@media screen and (max-device-width: 480px){
+    #columnsContainer {
+        width: 100%;
+        margin: auto;
+    }
+}
+.columnContainer {
+    min-width: 380px;
+    max-width: 520px;
+}
+.photo {
+    width: 100px;
+    height: 150px;
+    margin: auto;
 }
 p {
     color: red;
 }
+
