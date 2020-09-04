@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section id="Header" class="hero is-link">
+    <section class="hero is-link">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title is-size-2">
@@ -30,30 +30,30 @@
                 <div class="card">
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img id="img1" class="is-rounded" src="https://www.basketball-reference.com/req/202008124/images/players/thomais02.jpg" alt="Placeholder image">
+                            <img id="img1" class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p id="playerName1"class="title is-4">Isaiah Thomas</p>
-                                <p id="playerInfo1"class="subtitle is-6">Washington Wizards<br>Height: 5"9</p>
+                                <p id="playerName1"class="title is-4">Your Player</p>
+                                <p id="playerInfo1"class="subtitle is-6"></p>
                             </div>
                         </div>
-                        <div id="stats1" class="content">
-                            <div>Games Played: <span id="gamesPlayed1"></span></div>
-                            <div>Minutes: <span id="minutes1"></span></div>
-                            <div>Points: <span id="points1"></span></div>
-                            <div>Rebounds: <span id="reb1"></span></div>
-                            <div>Off-Rebounds: <span id="oreb1"></span></div>
-                            <div>Def-Rebounds: <span id="dreb1"></span></div>
-                            <div>Assists: <span id="assists1"></span></div>
-                            <div>Steals: <span id="steals1"></span></div>
-                            <div>Blocks: <span id="blocks1"></span></div>
-                            <div>Turnovers: <span id="turnovers1"></span></div>
-                            <div>FGpct: <span id="fg1"></span></div>
-                            <div>3Ppct: <span id="3p1"></span></div>
-                            <div>FTpct: <span id="ft1"></span></div>
+                        <div id="stats1">
+                            <button id="gamesPlayed1Text" class="statsButton" onclick="compareStat('gamesPlayed');">Games Played: <span id="gamesPlayed1" class="statNum"></span></button>
+                            <button id="minutes1Text" class="statsButton" onclick="compareStat('minutes');">Minutes: <span id="minutes1" class="statNum"></span></button>
+                            <button id="points1Text" class="statsButton" onclick="compareStat('points');">Points: <span id="points1" class="statNum"></span></button>
+                            <button id="reb1Text" class="statsButton" onclick="compareStat('reb');">Rebounds: <span id="reb1" class="statNum"></span></button>
+                            <button id="oreb1Text" class="statsButton" onclick="compareStat('oreb');">Off-Rebounds: <span id="oreb1" class="statNum"></span></button>
+                            <button id="dreb1Text" class="statsButton" onclick="compareStat('dreb');">Def-Rebounds: <span id="dreb1" class="statNum"></span></button>
+                            <button id="assists1Text" class="statsButton" onclick="compareStat('assists');">Assists: <span id="assists1" class="statNum"></span></button>
+                            <button id="steals1Text" class="statsButton" onclick="compareStat('steals');">Steals: <span id="steals1" class="statNum"></span></button>
+                            <button id="blocks1Text" class="statsButton" onclick="compareStat('blocks');">Blocks: <span id="blocks1" class="statNum"></span></button>
+                            <button id="turnovers1Text" class="statsButton" onclick="compareStat('turnovers');">Turnovers: <span id="turnovers1" class="statNum"></span></button>
+                            <button id="fg1Text" class="statsButton" onclick="compareStat('fg');">FGpct: <span id="fg1" class="statNum"></span></button>
+                            <button id="3p1Text" class="statsButton" onclick="compareStat('3p');">3Ppct: <span id="3p1" class="statNum"></span></button>
+                            <button id="ft1Text" class="statsButton" onclick="compareStat('ft');">FTpct: <span id="ft1" class="statNum"></span></button>
                         </div>
                     </div>
                 </div>
@@ -62,39 +62,39 @@
                 <div class="card">
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img id="img2" class="is-rounded" src="https://www.basketball-reference.com/req/202008124/images/players/thomais02.jpg" alt="Placeholder image">
+                            <img id="img2" class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p id="playerName2"class="title is-4">Isaiah Thomas</p>
-                                <p id="playerInfo2"class="subtitle is-6">Washington Wizards<br>Height: 5"9</p>
+                                <p id="playerName2"class="title is-4">Your Opponent</p>
+                                <p id="playerInfo2"class="subtitle is-6"></p>
                             </div>
                         </div>
-                        <div id="stats2" class="content">
-                            <div>Games Played: <span id="gamesPlayed2"></span></div>
-                            <div>Minutes: <span id="minutes2"></span></div>
-                            <div>Points: <span id="points2"></span></div>
-                            <div>Rebounds: <span id="reb2"></span></div>
-                            <div>Off-Rebounds: <span id="oreb2"></span></div>
-                            <div>Def-Rebounds: <span id="dreb2"></span></div>
-                            <div>Assists: <span id="assists2"></span></div>
-                            <div>Steals: <span id="steals2"></span></div>
-                            <div>Blocks: <span id="blocks2"></span></div>
-                            <div>Turnovers: <span id="turnovers2"></span></div>
-                            <div>FGpct: <span id="fg2"></span></div>
-                            <div>3Ppct: <span id="3p2"></span></div>
-                            <div>FTpct: <span id="ft2"></span></div>
-                            <br>
+                        <div id="stats2">
+                            <div id="gamesPlayed2Text" class="opponentStats is-hidden">Games Played: <span id="gamesPlayed2"></span></div>
+                            <div id="minutes2Text" class="opponentStats is-hidden">Minutes: <span id="minutes2"></span></div>
+                            <div id="points2Text" class="opponentStats is-hidden">Points: <span id="points2"></span></div>
+                            <div id="reb2Text" class="opponentStats is-hidden">Rebounds: <span id="reb2"></span></div>
+                            <div id="oreb2Text" class="opponentStats is-hidden">Off-Rebounds: <span id="oreb2"></span></div>
+                            <div id="dreb2Text" class="opponentStats is-hidden">Def-Rebounds: <span id="dreb2"></span></div>
+                            <div id="assists2Text" class="opponentStats is-hidden">Assists: <span id="assists2"></span></div>
+                            <div id="steals2Text" class="opponentStats is-hidden">Steals: <span id="steals2"></span></div>
+                            <div id="blocks2Text" class="opponentStats is-hidden">Blocks: <span id="blocks2"></span></div>
+                            <div id="turnovers2Text" class="opponentStats is-hidden">Turnovers: <span id="turnovers2"></span></div>
+                            <div id="fg2Text" class="opponentStats is-hidden">FGpct: <span id="fg2"></span></div>
+                            <div id="3p2Text" class="opponentStats is-hidden">3Ppct: <span id="3p2"></span></div>
+                            <div id="ft2Text" class="opponentStats is-hidden">FTpct: <span id="ft2"></span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="nextButtonContainer"></div>
     </section>
     <p id="playerId"></p>
-    <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button>
+    <!-- <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button> -->
     <script src="/js/index.js"></script>
 </body>
 
