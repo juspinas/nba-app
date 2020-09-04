@@ -11,6 +11,10 @@
 // }
 
 function getRandomPlayer(owner) {
+    document.getElementById("img" + owner).src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU";
+    document.getElementById("playerName" + owner).innerHTML = "Choosing Player <i class='fas fa-spinner fa-spin'></i>";
+    document.getElementById("playerInfo" + owner).innerHTML = " ";
+    document.getElementById("stats" + owner).classList.add('is-hidden');
     // Hardcoded page numbers
     let pageMin = 2741;
     let pageMax = 3268;
@@ -20,6 +24,7 @@ function getRandomPlayer(owner) {
     streamPromise.then((data) => showRandomPlayer(data,owner));
 }
 function showRandomPlayer(data,owner) {
+    document.getElementById("stats" + owner).classList.remove('is-hidden');
     console.log(data);
     const playerId = data.playerId;
     const firstName = data.firstName;
