@@ -24,7 +24,9 @@ function getRandomPlayer(owner) {
     streamPromise.then((data) => showRandomPlayer(data,owner));
 }
 function showRandomPlayer(data,owner) {
-    document.getElementById("stats" + owner).classList.remove('is-hidden');
+    if (owner == "1") {
+        document.getElementById("stats" + owner).classList.remove('is-hidden');
+    }
     console.log(data);
     const playerId = data.playerId;
     const firstName = data.firstName;
@@ -49,7 +51,6 @@ function showRandomPlayer(data,owner) {
     } else {
         document.getElementById("playerInfo" + owner).innerHTML = team + "<br>" + "Height: " + height;
     }
-
     getPlayerStats(playerId, owner);
 }
 
@@ -59,6 +60,9 @@ function getPlayerStats(playerId, owner) {
     streamPromise.then((data) => showPlayerStats(data, owner));
 }
 function showPlayerStats(stats, owner) {
+    const allStats = ["gamesPlayed","minutes","points",
+    "reb", "oreb","dreb","assists","steals",
+    "blocks","turnovers","fg","3p","ft"];
     console.log(stats);
     const playerId = stats.playerId;
     const gamesPlayed = stats.gamesPlayed;
@@ -87,6 +91,40 @@ function showPlayerStats(stats, owner) {
     document.getElementById("fg" + owner).innerHTML = fieldGoalPct.toString() + "%";
     document.getElementById("3p" + owner).innerHTML = fieldGoal3Pct.toString() + "%";
     document.getElementById("ft" + owner).innerHTML = freeThrowPct.toString() + "%";
+    for (i = 0; i < allStats.length; i++) {
+        if (document.getElementById(allStats[i] + "1Text").classList.contains('is-hidden')) {
+            document.getElementById(allStats[i] + "1Text").classList.remove('is-hidden');
+        }
+    }
+}
+function compareStat(stat) {
+    const allStats = ["gamesPlayed1Text","minutes1Text","points1Text",
+    "reb1Text", "oreb1Text","dreb1Text","assists1Text","steals1Text",
+    "blocks1Text","turnovers1Text","fg1Text","3p1Text","ft1Text"];
+
+    for (i = 0; i < allStats.length; i++) {
+        if (allStats[i] != stat + "1Text") {
+            document.getElementById(allStats[i]).classList.add('is-hidden');
+        }
+    }
+
+    document.getElementById("stats2").classList.remove('is-hidden');
+    document.getElementById(stat + "2Text").classList.remove('is-hidden');
+    document.getElementById("nextButtonContainer").innerHTML = "<button class='button nextButton is-fullwidth' onclick='resetStat();'>Next Round</button>";
+}
+
+function resetStat() {
+    const allStats = ["gamesPlayed","minutes","points",
+    "reb", "oreb","dreb","assists","steals",
+    "blocks","turnovers","fg","3p","ft"];
+    document.getElementById("nextButtonContainer").innerHTML = "";
+    for (i = 0; i < allStats.length; i++) {
+        if (!document.getElementById(allStats[i] + "2Text").classList.contains('is-hidden')) {
+            document.getElementById(allStats[i] + "2Text").classList.add('is-hidden');
+            document.getElementById(allStats[i] + "1Text").classList.add('is-hidden');
+        }
+    }
+    newRound();
 }
 
 var image1 = document.getElementById('img1');
@@ -99,6 +137,11 @@ image2.onerror = function () {
   this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU';
 };
 
-// window.onload = function() {
-//     getPlayerStats();
-// };
+function newRound() {
+    getRandomPlayer('1');
+    getRandomPlayer('2');
+}
+
+window.onload = function() {
+    newRound();
+};
