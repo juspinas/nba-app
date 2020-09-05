@@ -101,18 +101,20 @@ function compareStat(stat) {
     stat2 = parseFloat(stat2);
     if (stat1 < stat2) {
         // Lower stat
-        document.getElementById("card1").classList.add('shake');
         if (stat == "turnovers") {
             document.getElementById("card1").classList.add('zoom');
+        } else {
+            document.getElementById("card1").classList.add('shake');
         }
     } else if (stat1 == stat2) {
         // Tie
         document.getElementById("columnsContainer").classList.add('shake');
     } else {
         // // higher stat
-        document.getElementById("card1").classList.add('zoom');
         if (stat == "turnovers") {
             document.getElementById("card1").classList.add('shake');
+        } else {
+            document.getElementById("card1").classList.add('zoom');
         }
     }    
 
