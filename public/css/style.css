@@ -65,6 +65,45 @@ html,body {
     padding: 3.5px;
     color: black; 
 }
+.zoom {
+    animation-name: zoom; 
+    animation-duration: 0.2s;
+    animation-direction: reverse;
+    animation-iteration-count: 2;
+    animation-direction: alternate-reverse;
+    box-shadow: 0px 0px 0px 5px #009708;
+    /* box-shadow: 5 5 5 5 rgba(31, 255, 1, 0.74), 5 5 5 5px rgba(31, 255, 1, 0.74); */
+}
+.shake {
+    animation: shake 0.5s;
+    box-shadow: 0px 0px 0px 5px #a80b00;
+}
+@keyframes zoom {
+    0% { transform: scale(1.2);  }
+    10% { transform: scale(1.18); }
+    20% { transform: scale(1.16); }
+    30% { transform: scale(1.14); }
+    40% { transform: scale(1.12); }
+    50% { transform: scale(1.1); }
+    60% { transform: scale(1.08); }
+    70% { transform: scale(1.06); }
+    80% { transform: scale(1.04); }
+    90% { transform: scale(1.02); }
+    100% { transform: scale(1.0); }
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
 span {
     font-weight: bold;
 }
