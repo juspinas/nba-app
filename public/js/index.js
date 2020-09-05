@@ -175,12 +175,30 @@ function resetRecord() {
     newRound();
 }
 
+// how to play modal functions
+document.getElementById("howToPlayButton").addEventListener("click", function () {
+    document.getElementById("howToPlayModal").classList.toggle("is-active");
+    if (document.getElementById("dropdownButton").classList.contains("is-active")) {
+        document.getElementById("dropdownButton").classList.toggle("is-active");
+        document.getElementById("navbarMenuHero").classList.toggle("is-active");
+    }
+});
+document.getElementById("howToPlayModalBackground").addEventListener("click", function () {
+    document.getElementById("howToPlayModal").classList.toggle("is-active");
+});
+document.getElementById("howToPlayModalCloseButton").addEventListener("click", function () {
+    document.getElementById("howToPlayModal").classList.toggle("is-active");
+});
+
 // restart modal functions
 document.getElementById("restartButton").addEventListener("click", function () {
     document.getElementById("restartModal").classList.toggle("is-active");
+    if (document.getElementById("dropdownButton").classList.contains("is-active")) {
+        document.getElementById("dropdownButton").classList.toggle("is-active");
+        document.getElementById("navbarMenuHero").classList.toggle("is-active");
+    }
 });
-
-document.getElementById("modalBackground").addEventListener("click", function () {
+document.getElementById("restartModalBackground").addEventListener("click", function () {
     document.getElementById("restartModal").classList.toggle("is-active");
 });
 document.getElementById("noModalButton").addEventListener("click", function () {
