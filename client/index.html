@@ -36,8 +36,7 @@
                     </div>
                     <div id="navbarMenuHero" class="navbar-menu">
                         <div class="navbar-end">
-
-                            <a class="navbar-item">
+                            <a id="howToPlayButton" class="navbar-item">
                                 How to play
                             </a>
                             <a id="restartButton" class="navbar-item">
@@ -129,8 +128,37 @@
         </div>
         <div id="nextButtonContainer" class=""></div>
 
+        <div id="howToPlayModal" class="modal">
+            <div id="howToPlayModalBackground" class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">How to play</p>
+                    <button id="howToPlayModalCloseButton"class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="content">
+                        <figure class="navbar-item image logoContainer logoHowto">
+                            <img class="logo" src="/images/logo.png" alt="Logo">
+                        </figure>
+                        <h2><i>Who you got?</i></h2>
+                        <p>The goal of each round is to select a stat category where your NBA player beats your opponent.</p>
+                        <p>Your NBA player and their stats are shown on the left and your opponent is shown on the right (top and bottom for smaller screens). Your opponents stats are hidden and will only reveal the stat category you have chosen.</p>
+                        <p>Your win/loss record is tracked at the top.</p>
+                        <h3>Other Info:</h3>
+                        <p><i class='fas fa-basketball-ball'></i> Inspired by Top Trumps card game</p>
+                        <p><i class='fas fa-basketball-ball'></i> All stats are season averages from only the 2019-2020 NBA regular season</p>
+                        <p><i class='fas fa-basketball-ball'></i> Low turnover averages beat higher turnover averages</p>
+                        <p><i class='fas fa-basketball-ball'></i> Some player images may be incorrect or missing</p>
+                        <p><i class='fas fa-basketball-ball'></i> API used: <a href="https://www.balldontlie.io/#introduction" target="_blank">balldontlie free API</a></p>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+        <!-- Restart Modal -->
         <div id="restartModal" class="modal">
-            <div id="modalBackground" class="modal-background"></div>
+            <div id="restartModalBackground" class="modal-background"></div>
             <div class="modal-content">
                 <div class="box">
                     <section class="modal-card-body"> 
@@ -145,7 +173,6 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- <p id="playerId"></p> -->
     <!-- <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button> -->
