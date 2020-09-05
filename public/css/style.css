@@ -1,12 +1,53 @@
 html,body {
     width:100%;
 }
-.hero-body {
-    padding: 30px;
+#banner {
+    height: 100px;
+}
+.fullHeight {
+    height: 52px;
+    width: 348px;
+}
+.logoContainer {
+    padding: 0px;
+}
+.navbar-item img {
+    max-height: 100%;
+}
+.recordContainer {
+    display: block;
+    height: 3.25rem;
+    margin: auto;
+}
+#recordText {
+    padding-left: 50px;
+    padding-right: 5px;
+}
+#winLossRecord {
+    align-items: center;
+    display: flex;
+    font-size:30px;
+    padding-top:3px;
+    padding-bottom:3px;
+}
+#winCount {
+    padding-right: 5px;
+}
+#lossCount {
+    padding-left: 5px;
+}
+.navbar-burger {
+    color: white;
 }
 #columnsContainer {
     width: 50%;
     margin: auto;
+}
+@media screen {
+    .nextButton {
+        width: 50%;
+        margin: auto;
+    }
 }
 @media screen and (max-device-width: 1200px){
     #columnsContainer {
@@ -19,11 +60,26 @@ html,body {
         width: 90%;
         margin: auto;
     }
+    .nextButton {
+        width: 100%;
+    }
+    #nextButtonContainer {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 @media screen and (max-device-width: 768px){
     #columnsContainer {
         width: 70%;
         margin: auto;
+    }
+    #recordText {
+        display: none;
+        padding-left: 50px;
+        padding-right: 5px;
+    }
+    #yourPlayerTitleContainer {
+        display:none;
     }
 }
 @media screen and (max-device-width: 480px){
@@ -39,10 +95,20 @@ html,body {
     min-width: 380px;
     max-width: 520px;
 }
+.card-header-title {
+    background-color: #3273dc;
+    color: white;
+}
+.playerPosition {
+    color: #3273dc65;
+    font-size: 30px;
+    animation: fadeEffect 1s;
+}
 .photo {
     width: 100px;
     height: 150px;
     margin: auto;
+    animation: fadeEffect 1s;
 }
 .statsButton {
     text-align: left;
@@ -53,9 +119,15 @@ html,body {
     background-color: transparent;
     cursor: pointer;
     padding: 5px; 
+    animation: fadeEffect 1s;
+    outline: none;
+    transition: transform .3s;
 }
 .statsButton:hover {
-    text-decoration: underline;
+    transform: scale(1.1);
+}
+button:disabled {
+    color: black;
 }
 .opponentStats {
     text-align: left;
@@ -64,6 +136,7 @@ html,body {
     width: 100%;
     padding: 3.5px;
     color: black; 
+    animation: fadeEffect 1s;
 }
 .zoom {
     animation-name: zoom; 
@@ -72,11 +145,25 @@ html,body {
     animation-iteration-count: 2;
     animation-direction: alternate-reverse;
     box-shadow: 0px 0px 0px 5px #009708;
-    /* box-shadow: 5 5 5 5 rgba(31, 255, 1, 0.74), 5 5 5 5px rgba(31, 255, 1, 0.74); */
 }
 .shake {
     animation: shake 0.5s;
     box-shadow: 0px 0px 0px 5px #a80b00;
+}
+.shake-tie {
+    animation: shake 0.5s;
+    animation-iteration-count: 2;
+}
+.zoom-green {
+    animation-name: zoom-green; 
+    animation-duration: 0.2s;
+    animation-direction: reverse;
+    animation-iteration-count: 4;
+    animation-direction: alternate-reverse;
+}
+.shake-red {
+    animation: shake-red 0.5s;
+    animation-iteration-count: 2;
 }
 @keyframes zoom {
     0% { transform: scale(1.2);  }
@@ -91,6 +178,19 @@ html,body {
     90% { transform: scale(1.02); }
     100% { transform: scale(1.0); }
 }
+@keyframes zoom-green {
+    0% { transform: scale(2.0); color: rgb(2, 255, 2);}
+    10% { transform: scale(1.9); color: rgb(2, 255, 2); }
+    20% { transform: scale(1.8); color: rgb(2, 255, 2); }
+    30% { transform: scale(1.7); color: rgb(2, 255, 2); }
+    40% { transform: scale(1.6); color: rgb(2, 255, 2); }
+    50% { transform: scale(1.5); color: rgb(2, 255, 2); }
+    60% { transform: scale(1.4); color: rgb(2, 255, 2); }
+    70% { transform: scale(1.3); color: rgb(2, 255, 2); }
+    80% { transform: scale(1.2); color: rgb(2, 255, 2); }
+    90% { transform: scale(1.1); color: rgb(2, 255, 2); }
+    100% { transform: scale(1.0); color: rgb(2, 255, 2); }
+}
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -104,8 +204,36 @@ html,body {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+@keyframes shake-red {
+    0% { transform: translate(1px, 1px) rotate(0deg); color: red; }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); color: red; }
+    20% { transform: translate(-3px, 0px) rotate(1deg); color: red; }
+    30% { transform: translate(3px, 2px) rotate(0deg); color: red; }
+    40% { transform: translate(1px, -1px) rotate(1deg); color: red; }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); color: red; }
+    60% { transform: translate(-3px, 1px) rotate(0deg); color: red; }
+    70% { transform: translate(3px, 1px) rotate(-1deg); color: red; }
+    80% { transform: translate(-1px, -1px) rotate(1deg); color: red; }
+    90% { transform: translate(1px, 2px) rotate(0deg); color: red; }
+    100% { transform: translate(1px, -2px) rotate(-1deg); color: red; }
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/* .nextButtonContainer {
+    
+} */
+.nextButton {
+    animation: fadeEffect 1s;
+    background-color: #3273dc;
+    color: white;
+    font-size: 20px;;
+    display: flex;
+}
 span {
     font-weight: bold;
+    animation: fadeEffect 1s;
 }
 p {
     color: red;
