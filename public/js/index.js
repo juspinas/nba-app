@@ -1,15 +1,3 @@
-// function getPlayerCount() {
-//     const fetchPromise = fetch("/playerCount"); 
-//     const streamPromise = fetchPromise.then((response) => response.json()); 
-//     streamPromise.then((data) => storePlayerCount(data));
-// }
-// function storePlayerCount(data) {
-//     // window.localStorage.clear();
-//     const playerCount = data.playerCount;
-//     // window.localStorage.setItem('playerCount',JSON.stringify(playerCount));
-//     document.getElementById("playerCount").innerHTML = playerCount;
-// }
-
 function getRandomPlayer(owner) {
     document.getElementById("img" + owner).src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU";
     document.getElementById("playerName" + owner).innerHTML = "Choosing Player <i class='fas fa-spinner fa-spin'></i>";
@@ -98,15 +86,35 @@ function showPlayerStats(stats, owner) {
     }
 }
 function compareStat(stat) {
-    const allStats = ["gamesPlayed1Text","minutes1Text","points1Text",
-    "reb1Text", "oreb1Text","dreb1Text","assists1Text","steals1Text",
-    "blocks1Text","turnovers1Text","fg1Text","3p1Text","ft1Text"];
+    const allStats = ["gamesPlayed","minutes","points",
+    "reb", "oreb","dreb","assists","steals",
+    "blocks","turnovers","fg","3p","ft"];
 
     for (i = 0; i < allStats.length; i++) {
-        if (allStats[i] != stat + "1Text") {
-            document.getElementById(allStats[i]).classList.add('is-hidden');
+        if (allStats[i] + "1Text" != stat + "1Text") {
+            document.getElementById(allStats[i] + "1Text").classList.add('is-hidden');
         }
     }
+    let stat1 = document.getElementById(stat + "1").textContent;
+    let stat2 = document.getElementById(stat + "2").textContent;
+    stat1 = parseFloat(stat1);
+    stat2 = parseFloat(stat2);
+    if (stat1 < stat2) {
+        // Lower stat
+        document.getElementById("card1").classList.add('shake');
+        if (stat == "turnovers") {
+            document.getElementById("card1").classList.add('zoom');
+        }
+    } else if (stat1 == stat2) {
+        // Tie
+        document.getElementById("columnsContainer").classList.add('shake');
+    } else {
+        // // higher stat
+        document.getElementById("card1").classList.add('zoom');
+        if (stat == "turnovers") {
+            document.getElementById("card1").classList.add('shake');
+        }
+    }    
 
     document.getElementById("stats2").classList.remove('is-hidden');
     document.getElementById(stat + "2Text").classList.remove('is-hidden');
@@ -123,6 +131,16 @@ function resetStat() {
             document.getElementById(allStats[i] + "2Text").classList.add('is-hidden');
             document.getElementById(allStats[i] + "1Text").classList.add('is-hidden');
         }
+    }
+    // Remove animation classes
+    if (document.getElementById("card1").classList.contains('shake')) {
+        document.getElementById("card1").classList.remove('shake');
+    }
+    if (document.getElementById("card1").classList.contains('zoom')) {
+        document.getElementById("card1").classList.remove('zoom');
+    }
+    if (document.getElementById("columnsContainer").classList.contains('shake')) {
+        document.getElementById("columnsContainer").classList.remove('shake');
     }
     newRound();
 }
