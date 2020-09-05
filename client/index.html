@@ -9,18 +9,44 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <script src="https://kit.fontawesome.com/4f7d1717d6.js" crossorigin="anonymous"></script>
 </head>
+    
 
 <body>
-    <section class="hero is-link">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title is-size-3">
-                    NBA Trumps
-                </h1>
-                <h2 class="subtitle">
-                    Who you got?
-                </h2>
-            </div>
+    <section id="" class="hero is-link">
+        <div class="hero-head">
+            <header class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <figure class="navbar-item image logoContainer">
+                            <img class="logo" src="/images/logo.png" alt="Logo">
+                        </figure>
+                        <div class="recordContainer">
+                            <div id="winLossRecord">
+                                <span id="recordText">Current Record:</span>
+                                <span id="winCount">0</span>
+                                <span>-</span>
+                                <span id="lossCount">0</span>
+                            </div>
+                        </div>
+                        <span id="dropdownButton" class="navbar-burger burger" data-target="navbarMenuHero">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHero" class="navbar-menu">
+                        <div class="navbar-end">
+
+                            <a class="navbar-item">
+                                How to play
+                            </a>
+                            <a id="restartButton" class="navbar-item">
+                                Reset
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
         </div>
     </section>
 
@@ -28,16 +54,21 @@
         <div id="columnsContainer" class="columns is-variable is-8">
             <div class="columnContainer column">
                 <div id="card1" class="card">
+                    <header id="yourPlayerTitleContainer" class="card-header">
+                        <p class="card-header-title">YOUR PLAYER:</p>
+                    </header>
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img id="img1" class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU" alt="Placeholder image">
+                            <img id="img1" class="is-rounded"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU"
+                                alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p id="playerName1"class="title is-4">Your Player</p>
-                                <p id="playerInfo1"class="subtitle is-6"></p>
+                                <p id="playerName1" class="title is-4">Your Player</p>
+                                <p id="playerInfo1" class="subtitle is-6"></p>
                             </div>
                         </div>
                         <div id="stats1">
@@ -59,17 +90,22 @@
                 </div>
             </div>
             <div class="columnContainer column">
-                <div class="card">
+                <div id="card2" class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">YOUR OPPONENT:</p>
+                    </header>
                     <div class="card-image mx-6">
                         <figure class="photo image">
-                            <img id="img2" class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU" alt="Placeholder image">
+                            <img id="img2" class="is-rounded"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU"
+                                alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p id="playerName2"class="title is-4">Your Opponent</p>
-                                <p id="playerInfo2"class="subtitle is-6"></p>
+                                <p id="playerName2" class="title is-4">Your Opponent</p>
+                                <p id="playerInfo2" class="subtitle is-6"></p>
                             </div>
                         </div>
                         <div id="stats2">
@@ -91,9 +127,27 @@
                 </div>
             </div>
         </div>
-        <div id="nextButtonContainer"></div>
+        <div id="nextButtonContainer" class=""></div>
+
+        <div id="restartModal" class="modal">
+            <div id="modalBackground" class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <section class="modal-card-body"> 
+                        <h1 class="title">Are you sure you to restart?</h1>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <div class="buttons are-large">
+                            <button id="yesModalButton" class="button is-danger is-outlined">Yes</button>
+                            <button id="noModalButton" class="button">No</button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
     </section>
-    <p id="playerId"></p>
+    <!-- <p id="playerId"></p> -->
     <!-- <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button> -->
     <script src="/js/index.js"></script>
 </body>

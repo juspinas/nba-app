@@ -1,3 +1,4 @@
+// Get a random player
 function getRandomPlayer(owner) {
     document.getElementById("img" + owner).src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU";
     document.getElementById("playerName" + owner).innerHTML = "Choosing Player <i class='fas fa-spinner fa-spin'></i>";
@@ -32,8 +33,8 @@ function showRandomPlayer(data,owner) {
         console.log(imgName.toLowerCase());
         document.getElementById("img" + owner).src = "https://www.basketball-reference.com/req/202008124/images/players/" + imgName.toLowerCase() + "01.jpg";
     }
-    document.getElementById("playerId").innerHTML = playerId;
-    document.getElementById("playerName" + owner).innerHTML = position + " " + firstName + " " + lastName;
+    // document.getElementById("playerId").innerHTML = playerId;
+    document.getElementById("playerName" + owner).innerHTML = "<span class='playerPosition'>" + position + "</span> " + firstName + " " + lastName;
     if (data.heightFeet == null) {
         document.getElementById("playerInfo" + owner).innerHTML = team + "<br>" + "Height: No Data";
     } else {
@@ -42,6 +43,7 @@ function showRandomPlayer(data,owner) {
     getPlayerStats(playerId, owner);
 }
 
+// Get a player's Stats
 function getPlayerStats(playerId, owner) {
     const fetchPromise = fetch("/getPlayerStats?season=2019&player_ids=" + playerId); 
     const streamPromise = fetchPromise.then((response) => response.json()); 
@@ -85,6 +87,8 @@ function showPlayerStats(stats, owner) {
         }
     }
 }
+
+// compare the stats of the two players 
 function compareStat(stat) {
     const allStats = ["gamesPlayed","minutes","points",
     "reb", "oreb","dreb","assists","steals",
@@ -93,36 +97,51 @@ function compareStat(stat) {
     for (i = 0; i < allStats.length; i++) {
         if (allStats[i] + "1Text" != stat + "1Text") {
             document.getElementById(allStats[i] + "1Text").classList.add('is-hidden');
+        } else {
+            document.getElementById(allStats[i] + "1Text").disabled = true;
         }
     }
     let stat1 = document.getElementById(stat + "1").textContent;
     let stat2 = document.getElementById(stat + "2").textContent;
+    let winTotal = document.getElementById("winCount").textContent;
+    let lossTotal = document.getElementById("lossCount").textContent;
     stat1 = parseFloat(stat1);
     stat2 = parseFloat(stat2);
+    winTotal = parseInt(winTotal);
+    lossTotal = parseInt(lossTotal);
     if (stat1 < stat2) {
         // Lower stat
         if (stat == "turnovers") {
+            document.getElementById("winCount").innerHTML = (winTotal + 1).toString();
             document.getElementById("card1").classList.add('zoom');
+            document.getElementById("winCount").classList.add('zoom-green');
         } else {
+            document.getElementById("lossCount").innerHTML = (lossTotal + 1).toString();
             document.getElementById("card1").classList.add('shake');
+            document.getElementById("lossCount").classList.add('shake-red');
         }
     } else if (stat1 == stat2) {
         // Tie
-        document.getElementById("columnsContainer").classList.add('shake');
+        document.getElementById("columnsContainer").classList.add('shake-tie');
     } else {
         // // higher stat
         if (stat == "turnovers") {
+            document.getElementById("lossCount").innerHTML = (lossTotal + 1).toString();
             document.getElementById("card1").classList.add('shake');
+            document.getElementById("lossCount").classList.add('shake-red');
         } else {
+            document.getElementById("winCount").innerHTML = (winTotal + 1).toString();
             document.getElementById("card1").classList.add('zoom');
+            document.getElementById("winCount").classList.add('zoom-green');
         }
     }    
 
     document.getElementById("stats2").classList.remove('is-hidden');
     document.getElementById(stat + "2Text").classList.remove('is-hidden');
-    document.getElementById("nextButtonContainer").innerHTML = "<button class='button nextButton is-fullwidth' onclick='resetStat();'>Next Round</button>";
+    document.getElementById("nextButtonContainer").innerHTML = "<button class='button nextButton' onclick='resetStat();'>NEXT ROUND</button>";
 }
 
+// Reset the visibility of stats
 function resetStat() {
     const allStats = ["gamesPlayed","minutes","points",
     "reb", "oreb","dreb","assists","steals",
@@ -132,36 +151,68 @@ function resetStat() {
         if (!document.getElementById(allStats[i] + "2Text").classList.contains('is-hidden')) {
             document.getElementById(allStats[i] + "2Text").classList.add('is-hidden');
             document.getElementById(allStats[i] + "1Text").classList.add('is-hidden');
+            document.getElementById(allStats[i] + "1Text").disabled = false;
         }
     }
     // Remove animation classes
     if (document.getElementById("card1").classList.contains('shake')) {
         document.getElementById("card1").classList.remove('shake');
+        document.getElementById("lossCount").classList.remove('shake-red');
     }
     if (document.getElementById("card1").classList.contains('zoom')) {
         document.getElementById("card1").classList.remove('zoom');
+        document.getElementById("winCount").classList.remove('zoom-green');
     }
-    if (document.getElementById("columnsContainer").classList.contains('shake')) {
-        document.getElementById("columnsContainer").classList.remove('shake');
+    if (document.getElementById("columnsContainer").classList.contains('shake-tie')) {
+        document.getElementById("columnsContainer").classList.remove('shake-tie');
     }
     newRound();
 }
 
-var image1 = document.getElementById('img1');
-image1.onerror = function () {
-  this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU';
-};
+function resetRecord() {
+    document.getElementById("winCount").innerHTML = "0";
+    document.getElementById("lossCount").innerHTML = "0";
+    newRound();
+}
 
-var image2 = document.getElementById('img2');
-image2.onerror = function () {
-  this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU';
-};
+// restart modal functions
+document.getElementById("restartButton").addEventListener("click", function () {
+    document.getElementById("restartModal").classList.toggle("is-active");
+});
 
+document.getElementById("modalBackground").addEventListener("click", function () {
+    document.getElementById("restartModal").classList.toggle("is-active");
+});
+document.getElementById("noModalButton").addEventListener("click", function () {
+    document.getElementById("restartModal").classList.toggle("is-active");
+});
+document.getElementById("yesModalButton").addEventListener("click", function () {
+    document.getElementById("restartModal").classList.toggle("is-active");
+    resetRecord()
+});
+
+document.getElementById("dropdownButton").addEventListener("click", function () {
+    document.getElementById("dropdownButton").classList.toggle("is-active");
+    document.getElementById("navbarMenuHero").classList.toggle("is-active");
+});
+
+// start a round
 function newRound() {
     getRandomPlayer('1');
     getRandomPlayer('2');
 }
 
+// Check for empty images
+var image1 = document.getElementById('img1');
+image1.onerror = function () {
+  this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU';
+};
+var image2 = document.getElementById('img2');
+image2.onerror = function () {
+  this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIEzc2yczw7EgFufcnzrst6IcClp74SIN8w&usqp=CAU';
+};
+
+// Start a round on window load
 window.onload = function() {
     newRound();
 };
