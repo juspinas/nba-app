@@ -6,29 +6,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.static("public"));
 app.get('/', (req, res) => res.sendFile(__dirname + "/client/index.html"))
 
-// app.get('/playerCount', async (req, res) => {
-//     var settings = {
-//         qs: {
-//             page: "1",
-//             per_page: "1",
-//         },
-//         async: true,
-//         crossDomain: true,
-//         url: "https://www.balldontlie.io/api/v1/players",
-//         method: "GET",
-//         headers: {
-//             "Content-Type": "application/text"
-//         }
-//     };
-//     const nbaResponse = await request(settings).catch(error => console.log(error));
-//     const nbaResponseObj = JSON.parse(nbaResponse);
-//     res.status(200).send({
-//         playerCount: nbaResponseObj.meta.total_count,
-//     });
-// });
-
 app.get('/getPlayer', async (req, res) => {
-    // console.log(req);
     var settings = {
         qs: {
             "page": req.query.page,
