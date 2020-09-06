@@ -147,8 +147,8 @@ html,body {
     .logoContainer {
         width: 235px;
     }
-    .logoHowto {
-        width: 100%;
+    #logoImgHowToPlayContainer {
+        display: none;
     }
 }
 .columnContainer {
