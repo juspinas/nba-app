@@ -195,9 +195,10 @@ document.getElementById("howToPlayModalCloseButton").addEventListener("click", f
 document.getElementById("darkLightButton").addEventListener("click", function () {
     let allStatsButtons = document.getElementsByClassName('statsButton');
     let allOpponentStats = document.getElementsByClassName('opponentStats');
-    let allCardHeaders = document.getElementsByClassName('card-header-title');
 
     if (document.getElementById("background").classList.contains("bg-dark")) {
+        document.body.style.backgroundColor = "white";
+        document.getElementById("html").style.backgroundColor = "white";
         document.getElementById("background").classList.remove("bg-dark");
         document.getElementById("card1").classList.remove("dark-element");
         document.getElementById("card2").classList.remove("dark-element");
@@ -224,6 +225,8 @@ document.getElementById("darkLightButton").addEventListener("click", function ()
         document.getElementById("howToPlayBody").classList.remove("dark-element");
         document.getElementById("darkLightButton").innerHTML = "Dark Mode";
     } else {
+        document.body.style.backgroundColor = "#363636";
+        document.getElementById("html").style.backgroundColor = "#363636";
         document.getElementById("background").classList.add("bg-dark");
         document.getElementById("card1").classList.add("dark-element");
         document.getElementById("card2").classList.add("dark-element");
