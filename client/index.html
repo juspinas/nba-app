@@ -4,21 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NBA App</title>
+    <title>NBA Trumps - Who you got?</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <script src="https://kit.fontawesome.com/4f7d1717d6.js" crossorigin="anonymous"></script>
 </head>
     
 
-<body>
-    <section id="" class="hero is-link">
+<body id="background">
+    <section id="navbar" class="hero is-link">
         <div class="hero-head">
             <header class="navbar">
                 <div class="container">
                     <div class="navbar-brand">
                         <figure class="navbar-item image logoContainer">
-                            <img class="logo" src="/images/logo.png" alt="Logo">
+                            <img id="logoImg" class="logo" src="/images/logo.png" alt="Logo">
                         </figure>
                         <div class="recordContainer">
                             <div id="winLossRecord">
@@ -39,6 +39,9 @@
                             <a id="howToPlayButton" class="navbar-item">
                                 How to play
                             </a>
+                            <a id="darkLightButton" class="navbar-item">
+                                Dark mode
+                            </a>
                             <a id="restartButton" class="navbar-item">
                                 Reset
                             </a>
@@ -52,9 +55,9 @@
     <section>
         <div id="columnsContainer" class="columns is-variable is-8">
             <div class="columnContainer column">
-                <div id="card1" class="card">
+                <div id="card1" class="card is-dark">
                     <header id="yourPlayerTitleContainer" class="card-header">
-                        <p class="card-header-title">YOUR PLAYER:</p>
+                        <p id="yourPlayerTitle" class="card-header-title light-header">YOUR PLAYER:</p>
                     </header>
                     <div class="card-image mx-6">
                         <figure class="photo image">
@@ -70,7 +73,7 @@
                                 <p id="playerInfo1" class="subtitle is-6"></p>
                             </div>
                         </div>
-                        <div id="stats1">
+                        <div id="stats1" class="textWhite">
                             <button id="gamesPlayed1Text" class="statsButton" onclick="compareStat('gamesPlayed');">Games Played: <span id="gamesPlayed1" class="statNum"></span></button>
                             <button id="minutes1Text" class="statsButton" onclick="compareStat('minutes');">Minutes: <span id="minutes1" class="statNum"></span></button>
                             <button id="points1Text" class="statsButton" onclick="compareStat('points');">Points: <span id="points1" class="statNum"></span></button>
@@ -91,7 +94,7 @@
             <div class="columnContainer column">
                 <div id="card2" class="card">
                     <header class="card-header">
-                        <p class="card-header-title">YOUR OPPONENT:</p>
+                        <p id="yourOpponentTitle" class="card-header-title light-header">YOUR OPPONENT:</p>
                     </header>
                     <div class="card-image mx-6">
                         <figure class="photo image">
@@ -126,30 +129,34 @@
                 </div>
             </div>
         </div>
-        <div id="nextButtonContainer" class=""></div>
+        <div id="nextButtonContainer" class="is-link is-inverted">
+            <button id="nextButton"class='button nextButton light-button is-hidden' onclick='resetStat();'>NEXT ROUND</button>
+        </div>
 
         <div id="howToPlayModal" class="modal">
             <div id="howToPlayModalBackground" class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">How to play</p>
+                <header id="howToPlayHeader" class="modal-card-head howToPlayHeader light-header">
+                    <p class="modal-card-title howToPlayHeaderTitle">How to Play</p>
+                    <figure class="navbar-item image logoContainer logoHowto">
+                        <img id="logoImgHowToPlay" class="logo" src="/images/logo.png" alt="Logo">
+                    </figure>
                     <button id="howToPlayModalCloseButton"class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
+                <section id="howToPlayBody" class="modal-card-body howToPlayBody">
                     <div class="content">
-                        <figure class="navbar-item image logoContainer logoHowto">
-                            <img class="logo" src="/images/logo.png" alt="Logo">
-                        </figure>
-                        <h2><i>Who you got?</i></h2>
-                        <p>The goal of each round is to select a stat category where your NBA player beats your opponent.</p>
-                        <p>Your NBA player and their stats are shown on the left and your opponent is shown on the right (top and bottom for smaller screens). Your opponents stats are hidden and will only reveal the stat category you have chosen.</p>
-                        <p>Your win/loss record is tracked at the top.</p>
-                        <h3>Other Info:</h3>
-                        <p><i class='fas fa-basketball-ball'></i> Inspired by Top Trumps card game</p>
-                        <p><i class='fas fa-basketball-ball'></i> All stats are season averages from only the 2019-2020 NBA regular season</p>
-                        <p><i class='fas fa-basketball-ball'></i> Low turnover averages beat higher turnover averages</p>
-                        <p><i class='fas fa-basketball-ball'></i> Some player images may be incorrect or missing</p>
-                        <p><i class='fas fa-basketball-ball'></i> API used: <a href="https://www.balldontlie.io/#introduction" target="_blank">balldontlie free API</a></p>
+                        <div class="howToPlayText">
+                            <h2><i>Who you got?</i></h2>
+                            <p>The goal of each round is to select a stat category where your NBA player beats your opponent.</p>
+                            <p>Your NBA player and their stats are shown on the left and your opponent is shown on the right (top and bottom for smaller screens). Your opponents stats are hidden and will only reveal the stat category you have chosen.</p>
+                            <p>Your win/loss record is tracked at the top.</p>
+                            <h3>Other Info:</h3>
+                            <p><i class='fas fa-basketball-ball'></i> Inspired by Top Trumps card game</p>
+                            <p><i class='fas fa-basketball-ball'></i> All stats are season averages from only the 2019-2020 NBA regular season</p>
+                            <p><i class='fas fa-basketball-ball'></i> Low turnover averages beat higher turnover averages</p>
+                            <p><i class='fas fa-basketball-ball'></i> Some player images may be incorrect or missing</p>
+                            <p><i class='fas fa-basketball-ball'></i> API used: <a href="https://www.balldontlie.io/#introduction" target="_blank">balldontlie free API</a></p>
+                        </div>
                     </div>
 
                 </section>
@@ -174,8 +181,6 @@
             </div>
         </div>
     </section>
-    <!-- <p id="playerId"></p> -->
-    <!-- <button class="button" onclick="getRandomPlayer('1');getRandomPlayer('2');">Button</button> -->
     <script src="/js/index.js"></script>
 </body>
 

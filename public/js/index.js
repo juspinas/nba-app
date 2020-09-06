@@ -12,6 +12,7 @@ function getRandomPlayer(owner) {
     const streamPromise = fetchPromise.then((response) => response.json()); 
     streamPromise.then((data) => showRandomPlayer(data,owner));
 }
+// Shows player name and info
 function showRandomPlayer(data,owner) {
     if (owner == "1") {
         document.getElementById("stats" + owner).classList.remove('is-hidden');
@@ -33,7 +34,6 @@ function showRandomPlayer(data,owner) {
         console.log(imgName.toLowerCase());
         document.getElementById("img" + owner).src = "https://www.basketball-reference.com/req/202008124/images/players/" + imgName.toLowerCase() + "01.jpg";
     }
-    // document.getElementById("playerId").innerHTML = playerId;
     document.getElementById("playerName" + owner).innerHTML = "<span class='playerPosition'>" + position + "</span> " + firstName + " " + lastName;
     if (data.heightFeet == null) {
         document.getElementById("playerInfo" + owner).innerHTML = team + "<br>" + "Height: No Data";
@@ -54,7 +54,7 @@ function showPlayerStats(stats, owner) {
     "reb", "oreb","dreb","assists","steals",
     "blocks","turnovers","fg","3p","ft"];
     console.log(stats);
-    const playerId = stats.playerId;
+    const playerId = stats.playerId; // NOT USED
     const gamesPlayed = stats.gamesPlayed;
     const minutes = stats.minutes;
     const points = stats.points;
@@ -138,7 +138,8 @@ function compareStat(stat) {
 
     document.getElementById("stats2").classList.remove('is-hidden');
     document.getElementById(stat + "2Text").classList.remove('is-hidden');
-    document.getElementById("nextButtonContainer").innerHTML = "<button class='button nextButton' onclick='resetStat();'>NEXT ROUND</button>";
+    document.getElementById("nextButton").classList.remove('is-hidden');
+
 }
 
 // Reset the visibility of stats
@@ -146,7 +147,7 @@ function resetStat() {
     const allStats = ["gamesPlayed","minutes","points",
     "reb", "oreb","dreb","assists","steals",
     "blocks","turnovers","fg","3p","ft"];
-    document.getElementById("nextButtonContainer").innerHTML = "";
+    document.getElementById("nextButton").classList.add('is-hidden');
     for (i = 0; i < allStats.length; i++) {
         if (!document.getElementById(allStats[i] + "2Text").classList.contains('is-hidden')) {
             document.getElementById(allStats[i] + "2Text").classList.add('is-hidden');
@@ -188,6 +189,71 @@ document.getElementById("howToPlayModalBackground").addEventListener("click", fu
 });
 document.getElementById("howToPlayModalCloseButton").addEventListener("click", function () {
     document.getElementById("howToPlayModal").classList.toggle("is-active");
+});
+
+// Dark/Light mode
+document.getElementById("darkLightButton").addEventListener("click", function () {
+    let allStatsButtons = document.getElementsByClassName('statsButton');
+    let allOpponentStats = document.getElementsByClassName('opponentStats');
+    let allCardHeaders = document.getElementsByClassName('card-header-title');
+
+    if (document.getElementById("background").classList.contains("bg-dark")) {
+        document.getElementById("background").classList.remove("bg-dark");
+        document.getElementById("card1").classList.remove("dark-element");
+        document.getElementById("card2").classList.remove("dark-element");
+        document.getElementById("navbar").classList.remove("dark-header");
+        document.getElementById("navbar").classList.add("is-link");
+        document.getElementById("logoImg").src = "/images/logo.png";
+        document.getElementById("yourPlayerTitle").classList.remove("dark-header");
+        document.getElementById("yourOpponentTitle").classList.remove("dark-header");
+        document.getElementById("yourPlayerTitle").classList.add("light-header");
+        document.getElementById("yourOpponentTitle").classList.add("light-header");
+        document.getElementById("playerName1").classList.remove("textWhite");
+        document.getElementById("playerName2").classList.remove("textWhite");
+        document.getElementById("playerInfo1").classList.remove("textWhite");
+        document.getElementById("playerInfo2").classList.remove("textWhite");
+        for (i = 0; i < allStatsButtons.length; i++) {
+            allStatsButtons[i].style.color = 'black';
+            allOpponentStats[i].style.color = 'black';
+        }
+        document.getElementById("nextButton").classList.remove("dark-button");
+        document.getElementById("nextButton").classList.add("light-button");
+        document.getElementById("howToPlayHeader").classList.remove("dark-header");
+        document.getElementById("howToPlayHeader").classList.add("light-header");
+        document.getElementById("logoImgHowToPlay").src = "/images/logo.png";
+        document.getElementById("howToPlayBody").classList.remove("dark-element");
+        document.getElementById("darkLightButton").innerHTML = "Dark Mode";
+    } else {
+        document.getElementById("background").classList.add("bg-dark");
+        document.getElementById("card1").classList.add("dark-element");
+        document.getElementById("card2").classList.add("dark-element");
+        document.getElementById("navbar").classList.remove("is-link");
+        document.getElementById("navbar").classList.add("dark-header");
+        document.getElementById("logoImg").src = "/images/logo-dark.png";
+        document.getElementById("yourPlayerTitle").classList.remove("light-header");
+        document.getElementById("yourOpponentTitle").classList.remove("light-header");
+        document.getElementById("yourPlayerTitle").classList.add("dark-header");
+        document.getElementById("yourOpponentTitle").classList.add("dark-header");
+        document.getElementById("playerName1").classList.add("textWhite");
+        document.getElementById("playerName2").classList.add("textWhite");
+        document.getElementById("playerInfo1").classList.add("textWhite");
+        document.getElementById("playerInfo2").classList.add("textWhite");
+        for (i = 0; i < allStatsButtons.length; i++) {
+            allStatsButtons[i].style.color = 'white';
+            allOpponentStats[i].style.color = 'white';
+        }
+        document.getElementById("nextButton").classList.remove("light-button");
+        document.getElementById("nextButton").classList.add("dark-button");
+        document.getElementById("howToPlayHeader").classList.remove("light-header");
+        document.getElementById("howToPlayHeader").classList.add("dark-header");
+        document.getElementById("logoImgHowToPlay").src = "/images/logo-dark.png";
+        document.getElementById("howToPlayBody").classList.add("dark-element");
+        document.getElementById("darkLightButton").innerHTML = "Light Mode";
+    }
+    if (document.getElementById("dropdownButton").classList.contains("is-active")) {
+        document.getElementById("dropdownButton").classList.toggle("is-active");
+        document.getElementById("navbarMenuHero").classList.toggle("is-active");
+    }
 });
 
 // restart modal functions
