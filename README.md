@@ -1,6 +1,8 @@
 # nba-app
 Using an nba API
 
+Link to Application: https://nba-trumps.herokuapp.com/
+
 API link: https://www.balldontlie.io/#introduction
 Player photos: https://www.basketball-reference.com/req/202008124/images/players/<player>.jpg
 example player inputs:
